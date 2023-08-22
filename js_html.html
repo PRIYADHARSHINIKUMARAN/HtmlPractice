@@ -1,0 +1,108 @@
+<!DocType html>
+<html>
+    <head>
+        <title>COMBINE JS IN HTML</title>
+    </head>
+    <body>
+        <div id="parent1">
+            <p id="text1"></p>
+            <p id="text2">hiii</p>
+            <input id="input1"/>
+        </div>
+        <div id="parent2" style="background-color: darkgoldenrod;"></div>
+        <script>
+        // ADD TEXT CONTENT
+            document.getElementById("text1") .innerHTML="hello from js";
+
+        // RETRIEVE TEXT CONTENT
+            let wordFromHTML=document.getElementById("text2").textContent;
+            console.log(wordFromHTML);
+            
+        // TO GIVE ATTRIBUTE
+            document.getElementById("input1") .value="enter your name";
+
+        // TO STYLE ATTRIBUTE
+            document.getElementById("input1").style.width="20px";
+            document.getElementById("input1").style.backgroundColor="blue";
+            document.getElementById("input1").style.color="white";
+
+        // TO CREATE ELEMENT AND PUT IT IN PARENT ELEMENT
+             let ChildElement=document.createElement("p");
+             ChildElement.innerHTML="im child element";
+             document.getElementById("parent2").appendChild(ChildElement);
+
+        // COLLECTIONS AND NODES
+        let groupOfElements=document.getElementsByTagName("p");
+        console.log(groupOfElements[1].textContent)
+        console.log(groupOfElements[1].textcontent);
+
+        // let groupOfElements=document.getElementsByTagName("p");
+        for (let i=0; i<groupOfElements.length; i++){
+            console.log(groupOfElements[i].textContent);
+        }
+
+        // BOM
+        // URL DETAILS
+        console.log(window.location.protocol);
+        console.log(window.location.host);
+        console.log(window.location.hostname);
+
+        // OPEN NEW WINDOW
+        window.open("https://www.w3schools.com/whatis/whatis_js.asp");
+
+        //PAGE FORWARD OR BACKWARD
+        window.history.back();
+        // window.history.forward();
+        
+        // CHECK FOR COOKIES
+        console.log(navigator.cookieEnabled);
+        console.log(navigator.cookieDisabled);
+
+        // POPUP
+        // ALERT
+        // alert("user logged in");
+
+        // CONFIRM
+        // alert("user logged in");
+        // let flag=confirm("im the admin");
+        // console.log(flag);
+
+        // PROMPT
+        alert("user logged in"); // ALERT
+        let flag=confirm("im the admin"); // CONFIRM
+        console.log(flag);
+        let wordPrompt=prompt("enter your name","example:xyz"); // PROMPT
+        console.log(wordPrompt)
+
+        // FETCH
+
+        // GET METHOD
+        fetch("https://jsonplaceholder.typicode.com/posts/2")
+        .then((response)=>response.json())
+        .then((val)=>{
+            console.log(val);
+            console.log(val.id);
+            console.log(val.title);
+        });
+
+        // POST METHOD
+        fetch("https://jsonplaceholder.typicode.com/todos",{
+            method:"POST",
+            body:JSON.stringify({
+                userid:1,
+                title:"delectus aut autem",
+                id:1,
+                completed:false,
+            }),
+            headers:{
+                "Content-type":"application/json:Charaet=UTF-8",
+            },
+        })
+        .then((res)=>res.json())
+        .then((val)=>{
+            console.log(val);
+        })
+
+        </script>
+    </body>
+</html>
